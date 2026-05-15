@@ -225,7 +225,14 @@ let isPlaying=false;
 function toggleMusic(){
   if(isPlaying){audio.pause(); isPlaying=false; document.getElementById('musicToggle').innerText="▶ Play Musik";}
   else{audio.play(); isPlaying=true; document.getElementById('musicToggle').innerText="⏸ Stop Musik";}
+}
+  
+// Partikel love
+const canvas=document.getElementById("canvas"); const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+class Heart{constructor(){this.x=Math.random()*canvas.width; this.y=canvas.height+Math.random()*100; this.size=10+Math.random()*20; this.speed=0.5+Math.random()*1.5; this.alpha=0.5+Math.random()*0.5; this.color="rgba(255,0,100,"+this.alpha+")";}draw(){ctx.save();ctx.translate(this.x,this.y);ctx.fillStyle=this.color;ctx.beginPath();ctx.moveTo(0,-this.size/2);ctx.bezierCurveTo(this.size/2,-this.size,this.size,-this.size/4,0,this.size);ctx.bezierCurveTo(-this.size,-this.size/4,-this.size/2,-this.size,0,-this.size/2);ctx.closePath();ctx.fill();ctx.restore();}update(){this.y-=this.speed;if(this.y<-50){this.y=canvas.height+50;this.x=Math.random()*canvas.width;}this.draw();}}
 </script>
+
 </body>
 </html>
 
